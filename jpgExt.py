@@ -15,7 +15,7 @@ for filename in os.listdir(imageDir):
             #print(f.read())
             #print('--- filename --- ' + filename )
             print(pytesseract.image_to_string(PIL.Image.open(imageDir + '\\' + filename), lang='eng', config=tessdata_dir_config))
-
+    print("***************************************************************************")
 
 
 #print(pytesseract.image_to_string(PIL.Image.open('img1.jpg'), lang='eng', config = tessdata_dir_config))
