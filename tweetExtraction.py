@@ -14,7 +14,7 @@ access_token_secret = '26HiFKSUHjQskPSMm278E9raFWwqJDoJVcHGPUCJUEQmC'
 auth = tw.OAuthHandler(api_key, api_key_secret, access_token, access_token_secret)
 api = tw.API(auth, wait_on_rate_limit=True)
 search_query = "Narendra Modi"
-no_of_tweets = 100
+no_of_tweets = 200
 
 try:
     tweets = api.search_tweets(q=search_query, lang='en', count=no_of_tweets, tweet_mode='extended')
