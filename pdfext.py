@@ -2,24 +2,26 @@ import PyPDF2
 import os
 
 
-pdfDir = 'D:\\Newfolder\\Freelancing\\Upwork\\testExtText\\pdfs'
-for filename in os.listdir(pdfDir):
-    if filename.endswith('.pdf'):
-        with open(os.path.join(pdfDir, filename)) as f:
-            print('--- filename --- ' + filename)
-            pdfReader = PyPDF2.PdfReader(pdfDir + '\\' + filename)
-            numPages = len(pdfReader.pages)
-            page = pdfReader.pages[0]
-            text = page.extract_text()
-            print("Number of Pages:", numPages)
-            print("Text:\n"+text)
-            print("***************************************************************************")
+def print_lines_from_pdf(pdf_path):
+    with open(pdf_path, 'rb') as file:
+        pdf_reader = PyPDF2.PdfReader(pdf_path)
+            #PyPDF2.PdfFileReader(file)
+        pageind = 0
 
-#text = extract_text('D:\\Newfolder\\CV\\AshwinKumarHM.pdf')
+        pgno = len(pdf_reader.pages)
+            #pdf_reader.getNumPages()
+        for i in range(0,pgno):
+            PgOb = pdf_reader.pages[pageind]
+                #pdf_reader.getPage(i)
+            Text = PgOb.extract_text()
+            pageind = pageind + 1
+                #extractText()
+            print(Text)
+            print('------------------')
 
-#pattern = re.compile(r"[a-zA-Z]+,{1}\s{1}")
-#matches = pattern.findall(text)
-#print(matches)
+pdfDir = 'D:\\Newfolder\\CV\\Freelance\\UpWork'
+    #'D:\\Newfolder\\Freelancing\\Upwork\\testExtText\\pdfs'
 
-#stringoftext = text.split(' ')
-#print(stringoftext)
+pdf_file_path = 'D:\\Newfolder\\CV\\Freelance\\UpWork\\List-of-participants-Dec-20-2023.pdf'
+print_lines_from_pdf(pdf_file_path)
+
